@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-18T13:48:14.275Z</updated>
+  <updated>2017-04-18T13:51:01.277Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,11 +20,11 @@
     <link href="http://yoursite.com/2017/04/18/hello-world/"/>
     <id>http://yoursite.com/2017/04/18/hello-world/</id>
     <published>2017-04-18T07:28:00.000Z</published>
-    <updated>2017-04-18T13:48:14.275Z</updated>
+    <updated>2017-04-18T13:51:01.277Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="hexo-theme-raytaylorism-v2"><a href="#hexo-theme-raytaylorism-v2" class="headerlink" title="hexo-theme-raytaylorism v2"></a>hexo-theme-raytaylorism v2</h1><p>raytaylorism（Ray Taylor主义）是我自己设计并制作的一款清新的的响应式Material Design风格的<a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>主题。该主题支持最新的Hexo 3.1版本。<strong>本主题不再支持Hexo 2.x版本，请使用本主题前备份你的数据并升级到Hexo 3。</strong></p>
+    <content type="html"><![CDATA[<h1 id="hexo-theme-raytaylorism-v2"><a href="#hexo-theme-raytaylorism-v2" class="headerlink" title="hexo-theme-raytaylorism v2"></a>hexo-theme-raytaylorism v2</h1><p>raytaylorism（Ray Taylor主义）是我自己设计并制作的一款清新的的响应式Material Design风格的<a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>主题。该主题支持最新的Hexo 3.1版本。<strong>本主题不再支持Hexo 2.x版本，请使用本主题前备份你的数据并升级到Hexo 3。 <a id="more"></a> </strong></p>
 <p>（English document is coming soon…）</p>
-<h2 id="预览"><a href="#预览" class="headerlink" title="预览 "></a>预览 <a id="more"></a></h2><ul>
+<h2 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h2><ul>
 <li><a href="http://raytaylorlin.com/" target="_blank" rel="external">我的博客</a></li>
 <li><a href="http://raytaylorlin-blog.qiniudn.com/image%2Fscreenshot%2Fscreenshot1.jpg" target="_blank" rel="external">主题截图1</a></li>
 <li><a href="http://raytaylorlin-blog.qiniudn.com/image%2Fscreenshot%2Fscreenshot2.jpg" target="_blank" rel="external">主题截图2</a></li>
@@ -111,9 +111,7 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;hexo-theme-raytaylorism-v2&quot;&gt;&lt;a href=&quot;#hexo-theme-raytaylorism-v2&quot; class=&quot;headerlink&quot; title=&quot;hexo-theme-raytaylorism v2&quot;&gt;&lt;/a&gt;hexo-theme-raytaylorism v2&lt;/h1&gt;&lt;p&gt;raytaylorism（Ray Taylor主义）是我自己设计并制作的一款清新的的响应式Material Design风格的&lt;a href=&quot;http://hexo.io/&quot;&gt;Hexo&lt;/a&gt;主题。该主题支持最新的Hexo 3.1版本。&lt;strong&gt;本主题不再支持Hexo 2.x版本，请使用本主题前备份你的数据并升级到Hexo 3。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;（English document is coming soon…）&lt;/p&gt;
-&lt;h2 id=&quot;预览&quot;&gt;&lt;a href=&quot;#预览&quot; class=&quot;headerlink&quot; title=&quot;预览 &quot;&gt;&lt;/a&gt;预览
+      &lt;h1 id=&quot;hexo-theme-raytaylorism-v2&quot;&gt;&lt;a href=&quot;#hexo-theme-raytaylorism-v2&quot; class=&quot;headerlink&quot; title=&quot;hexo-theme-raytaylorism v2&quot;&gt;&lt;/a&gt;hexo-theme-raytaylorism v2&lt;/h1&gt;&lt;p&gt;raytaylorism（Ray Taylor主义）是我自己设计并制作的一款清新的的响应式Material Design风格的&lt;a href=&quot;http://hexo.io/&quot;&gt;Hexo&lt;/a&gt;主题。该主题支持最新的Hexo 3.1版本。&lt;strong&gt;本主题不再支持Hexo 2.x版本，请使用本主题前备份你的数据并升级到Hexo 3。
     
     </summary>
     
