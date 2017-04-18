@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-18T14:32:34.911Z</updated>
+  <updated>2017-04-18T14:34:57.700Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/04/18/Readme/"/>
     <id>http://yoursite.com/2017/04/18/Readme/</id>
     <published>2017-04-18T15:28:00.000Z</published>
-    <updated>2017-04-18T14:32:34.911Z</updated>
+    <updated>2017-04-18T14:34:57.700Z</updated>
     
     <content type="html"><![CDATA[<h1 id="1-Hexo介绍"><a href="#1-Hexo介绍" class="headerlink" title="1 Hexo介绍"></a>1 Hexo介绍</h1><p><a href="https://hexo.io/zh-cn/" target="_blank" rel="external">Hexo</a>是基于<code>NodeJs</code>的静态博客框架，简单、轻量，其生成的静态网页可以托管在<code>Github</code>和<code>Heroku</code>上。</p>
 <ul>
@@ -30,7 +30,7 @@
 <li>丰富的插件</li>
 </ul>
 <blockquote>
-<p>下面以我的博客为例，limedroid.github.io</p>
+<p><a id="more"></a> 下面以我的博客为例，netcoreblog.com</p>
 </blockquote>
 <h2 id="2-环境准备"><a href="#2-环境准备" class="headerlink" title="2 环境准备"></a>2 环境准备</h2><h3 id="2-1-安装node-js"><a href="#2-1-安装node-js" class="headerlink" title="2.1 安装node.js"></a>2.1 安装node.js</h3><p>去<a href="https://nodejs.org/en/download/" target="_blank" rel="external">nodejs官网</a>下载对应系统的安装包，按提示安装。</p>
 <p>检验安装成功：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ node -v</div></pre></td></tr></table></figure></p>
@@ -134,7 +134,15 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;1-Hexo介绍&quot;&gt;&lt;a href=&quot;#1-Hexo介绍&quot; class=&quot;headerlink&quot; title=&quot;1 Hexo介绍&quot;&gt;&lt;/a&gt;1 Hexo介绍&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://hexo.io/zh-cn/&quot; target=&quot;_blan
+      &lt;h1 id=&quot;1-Hexo介绍&quot;&gt;&lt;a href=&quot;#1-Hexo介绍&quot; class=&quot;headerlink&quot; title=&quot;1 Hexo介绍&quot;&gt;&lt;/a&gt;1 Hexo介绍&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://hexo.io/zh-cn/&quot;&gt;Hexo&lt;/a&gt;是基于&lt;code&gt;NodeJs&lt;/code&gt;的静态博客框架，简单、轻量，其生成的静态网页可以托管在&lt;code&gt;Github&lt;/code&gt;和&lt;code&gt;Heroku&lt;/code&gt;上。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;超快速度&lt;/li&gt;
+&lt;li&gt;支持MarkDown&lt;/li&gt;
+&lt;li&gt;一键部署&lt;/li&gt;
+&lt;li&gt;丰富的插件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
     
     </summary>
     
