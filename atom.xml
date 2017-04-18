@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-18T09:03:42.113Z</updated>
+  <updated>2017-04-18T09:09:06.827Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/04/18/hello-world/"/>
     <id>http://yoursite.com/2017/04/18/hello-world/</id>
     <published>2017-04-18T07:28:00.000Z</published>
-    <updated>2017-04-18T09:03:42.113Z</updated>
+    <updated>2017-04-18T09:09:06.827Z</updated>
     
     <content type="html"><![CDATA[<h1 id="hexo-theme-raytaylorism-v2"><a href="#hexo-theme-raytaylorism-v2" class="headerlink" title="hexo-theme-raytaylorism v2"></a>hexo-theme-raytaylorism v2</h1><p>raytaylorism（Ray Taylor主义）是我自己设计并制作的一款清新的的响应式Material Design风格的<a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>主题。该主题支持最新的Hexo 3.1版本。<strong>本主题不再支持Hexo 2.x版本，请使用本主题前备份你的数据并升级到Hexo 3。</strong></p>
 <p>（English document is coming soon…）</p>
@@ -111,7 +111,7 @@
     
     <summary type="html">
     
-      记录博主使用hexo的过程
+      &lt;h1 id=&quot;hexo-theme-raytaylorism-v2&quot;&gt;&lt;a href=&quot;#hexo-theme-raytaylorism-v2&quot; class=&quot;headerlink&quot; title=&quot;hexo-theme-raytaylorism v2&quot;&gt;&lt;/a&gt;hexo-the
     
     </summary>
     
