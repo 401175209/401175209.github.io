@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-18T14:34:57.700Z</updated>
+  <updated>2017-04-19T03:35:00.532Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,89 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2017/04/19/typora%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+    <id>http://yoursite.com/2017/04/19/typora使用教程/</id>
+    <published>2017-04-19T03:35:00.106Z</published>
+    <updated>2017-04-19T03:35:00.532Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="typora使用教程"><a href="#typora使用教程" class="headerlink" title="typora使用教程"></a>typora使用教程</h1><p>markdown对于广大码农来说再平常不过了，方便快捷。</p>
+<p>目前市面上出现了大量的markdown编辑器：</p>
+<ul>
+<li><p>Mou:只支持Mac</p>
+</li>
+<li><p>Typed</p>
+</li>
+<li><p>Ulysess</p>
+</li>
+<li><p>Macdown</p>
+<p>等等。。。这里不再赘述。</p>
+<p>本文重点推荐Typora这款小众的编辑器，简介，用起来一个字<strong>爽</strong>。</p>
+<p>下载地址www.typora.io,也可以点击<a href="www.baidu.com">下载</a></p>
+<blockquote>
+<p>接下来重点说一下typora的特别之处</p>
+</blockquote>
+<hr>
+<ul>
+<li>[x] 制作表格</li>
+<li>[x] 拖拽图片</li>
+</ul>
+</li>
+</ul>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>输入ctrl+t,即可出现快速设置表格弹出窗，如图：<img src="C:\Users\40117\Desktop\QQ截图20170419110512.png" alt="QQ截图20170419110512"></p>
+<p>在此设置表格的行数和列数点击OK按钮即可。生产表格如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">第一行</th>
+<th style="text-align:center">第二列</th>
+<th style="text-align:right">第三列</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">213</td>
+<td style="text-align:center">微软v</td>
+<td style="text-align:right">额我打算</td>
+</tr>
+<tr>
+<td style="text-align:left">我的</td>
+<td style="text-align:center">we微软</td>
+<td style="text-align:right">we微软</td>
+</tr>
+<tr>
+<td style="text-align:left">我亲耳</td>
+<td style="text-align:center">犬瘟热</td>
+<td style="text-align:right">微软</td>
+</tr>
+</tbody>
+</table>
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p>直接拖拽图片到typora中即可显示图片，不需要写很长的markdown代：</p>
+<p><img src="C:\Users\40117\Desktop\QQ截图20170419110748.png" alt="QQ截图20170419110748"></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="可以显示大纲"><a href="#可以显示大纲" class="headerlink" title="可以显示大纲"></a>可以显示大纲</h3><p>在typora右下角如图所示：<img src="C:\Users\40117\Desktop\QQ截图20170419111054.png" alt="QQ截图20170419111054"></p>
+<p>点击园即可显示大纲，同时点击右侧小按钮可以切换代码和预览试图，是不是很方便呀。</p>
+<p>本文也是我学习typora的联系文本，自己联系的同时希望也可以版主别人。</p>
+<h4 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public static void test()</div><div class="line">&#123;</div><div class="line"> 	printf(&quot;哈哈哈&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><hr>
+<p>nimei</p>
+<p><strong>nimei </strong></p>
+<p><strong>nimie</strong></p>
+<h4 id="块内函数"><a href="#块内函数" class="headerlink" title="块内函数"></a>块内函数</h4><p>使用<code>test()</code>函数</p>
+<h4 id="插入表情"><a href="#插入表情" class="headerlink" title="插入表情"></a>插入表情</h4><p>:smile::a</p>
+<p>:accept::许可</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;typora使用教程&quot;&gt;&lt;a href=&quot;#typora使用教程&quot; class=&quot;headerlink&quot; title=&quot;typora使用教程&quot;&gt;&lt;/a&gt;typora使用教程&lt;/h1&gt;&lt;p&gt;markdown对于广大码农来说再平常不过了，方便快捷。&lt;/p&gt;
+&lt;p&gt;目前
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Hexo使用和介绍</title>
