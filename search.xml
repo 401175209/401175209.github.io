@@ -212,9 +212,9 @@
         
         <tags>
             
-            <tag> 部署安装 </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> 部署安装 </tag>
             
         </tags>
         
@@ -319,9 +319,9 @@
         
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> 主题 </tag>
+            
+            <tag> hexo </tag>
             
         </tags>
         
@@ -331,17 +331,17 @@
   
     
     <entry>
+      <title><![CDATA[读书]]></title>
+      <url>/reading/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[关于]]></title>
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<p>大家好，我是微尘小四儿。欢迎来到我的个人技术博客。</p>
 <p>现在在一家初创公司工作，每天忙得像个傻逼，没有休息时间。现在主要研究ThinkPHP和asp.net core。博客也是为了记录自己在生活学习中的点点滴滴，希望和大家共同交流学习。</p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[读书]]></title>
-      <url>/reading/index.html</url>
-      <content type="html"></content>
     </entry>
     
   
