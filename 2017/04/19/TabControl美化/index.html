@@ -7,7 +7,7 @@
 
     
 
-    <title>使用教程 | 微尘小四儿</title>
+    <title>C#自定义控件之-TabControl美化 | 微尘小四儿</title>
     <meta name="author" content="微尘小四儿">
     
     <meta name="description" content="微尘小四儿的个人微博，主要记录自己生活学习中的一些个人想法">
@@ -15,7 +15,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="C#自定义控件之-TabControl美化"/>
     <meta property="og:site_name" content="微尘小四儿的博客"/>
 
     
@@ -217,30 +217,83 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper cyan">
-        <span class="breadcrumb">当前位置（标签）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
         
+            
+    
+    
+    <a class="breadcrumb" href="/categories/C/">C#</a>
+
 
         
-            <a class="breadcrumb" href="/tags/使用教程/">使用教程</a>
+
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>C#自定义控件之-TabControl美化</h1>
+    
 
 
-    <div class="collection mt-0">
+            </div>
+            <time class="pink-link-context" datetime="2017-04-19T11:03:36.000Z"><a href="/2017/04/19/TabControl美化/">2017-04-19</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>&nbsp阅读次数：
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
         
-            <a href="/2017/04/19/typora使用教程/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-04-19T03:41:19.000Z">2017-04-19</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                typora使用和介绍
-            </a>
+            <a href="/tags/C/" class="chip pink lighten-1">C#</a>
+        
+            <a href="/tags/控件美化/" class="chip pink lighten-1">控件美化</a>
+        
+            <a href="/tags/TabControl/" class="chip pink lighten-1">TabControl</a>
         
     </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#C-自定义控件之-TabControl美化"><span class="section table-of-contents-text">C#自定义控件之-TabControl美化</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#问题一：tabpage无法占满整个tabcontrol"><span class="section table-of-contents-text">问题一：tabpage无法占满整个tabcontrol</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#问题二：无法隐藏tabcontrol的标签"><span class="section table-of-contents-text">问题二：无法隐藏tabcontrol的标签</span></a></li></ol></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <h1 id="C-自定义控件之-TabControl美化"><a href="#C-自定义控件之-TabControl美化" class="headerlink" title="C#自定义控件之-TabControl美化"></a>C#自定义控件之-TabControl美化</h1><p>&#160;&#160;&#160;&#160;使用C#开发了很多桌面应用程序，一直苦恼于系统自带的控件太丑，网上资源又太乱，因此为了以后自己使用和方便他人从这篇博文开始，陆续把自己收集整理的各类控件分享给大家一块学习，有不对的地方还请大家指出。不废话了，今天的主角是—–TabControl<br><a id="more"></a></p>
+<h2 id="问题一：tabpage无法占满整个tabcontrol"><a href="#问题一：tabpage无法占满整个tabcontrol" class="headerlink" title="问题一：tabpage无法占满整个tabcontrol"></a>问题一：tabpage无法占满整个tabcontrol</h2><p>&#160;&#160;&#160;&#160;tabcontrol在客户端中使用的频率还是挺高的，但是系统自带的tabcontrol通过属性无法改变控件四周的间距，tabpage无法占满整个tabcontrol<br><code>解决方法：</code>自定义控件继承tabcontrol，然后重写其显示区域的大小，通过改变tabcontrol的显示区域来间接使tabpage占满整个控件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public override Rectangle DisplayRectangle</div><div class="line">&#123;</div><div class="line">  get</div><div class="line">  &#123;</div><div class="line">      Rectangle rect = base.DisplayRectangle;</div><div class="line">      return new Rectangle(rect.Left - 4, rect.Top - 4, rect.Width + 8, rect.Height + 8);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="问题二：无法隐藏tabcontrol的标签"><a href="#问题二：无法隐藏tabcontrol的标签" class="headerlink" title="问题二：无法隐藏tabcontrol的标签"></a>问题二：无法隐藏tabcontrol的标签</h2><p>&#160;&#160;&#160;&#160;tabcontrol控件自带的样式无法隐藏标签，对于一些追求界面美化的人（比如博主）这一点是难以接受的，为了解决这个问题，以下是从各个途径获得的解决办法。<br><code>解决方法1：</code>使用panel容器，添加tabcontrol控件，调整tabcontrol大小，使标签部分不显示即可。<br><code>解决方法2：</code>设置ItemSize属性未（0，1），可以使标签高度缩小到1，但是不能完全消除，为了不让这1高度影响整体，建议标签文字设为空即可。</p>
+
+                
+<p class="pink-link-context">
+    <a href="/2017/04/19/typora使用教程/" rel="next" title="typora使用和介绍">
+    上一篇：typora使用和介绍
+  </a>
+</p>
+
+
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
 
 
 </div>
