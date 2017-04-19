@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-19T03:35:00.532Z</updated>
+  <updated>2017-04-19T03:41:42.523Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>typora使用和介绍</title>
     <link href="http://yoursite.com/2017/04/19/typora%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
     <id>http://yoursite.com/2017/04/19/typora使用教程/</id>
-    <published>2017-04-19T03:35:00.106Z</published>
-    <updated>2017-04-19T03:35:00.532Z</updated>
+    <published>2017-04-19T03:41:19.000Z</published>
+    <updated>2017-04-19T03:41:42.523Z</updated>
     
     <content type="html"><![CDATA[<h1 id="typora使用教程"><a href="#typora使用教程" class="headerlink" title="typora使用教程"></a>typora使用教程</h1><p>markdown对于广大码农来说再平常不过了，方便快捷。</p>
 <p>目前市面上出现了大量的markdown编辑器：</p>
@@ -32,7 +32,7 @@
 <li><p>Ulysess</p>
 </li>
 <li><p>Macdown</p>
-<p>等等。。。这里不再赘述。</p>
+<p><a id="more"></a> 等等。。。这里不再赘述。</p>
 <p>本文重点推荐Typora这款小众的编辑器，简介，用起来一个字<strong>爽</strong>。</p>
 <p>下载地址www.typora.io,也可以点击<a href="www.baidu.com">下载</a></p>
 <blockquote>
@@ -91,10 +91,27 @@
     <summary type="html">
     
       &lt;h1 id=&quot;typora使用教程&quot;&gt;&lt;a href=&quot;#typora使用教程&quot; class=&quot;headerlink&quot; title=&quot;typora使用教程&quot;&gt;&lt;/a&gt;typora使用教程&lt;/h1&gt;&lt;p&gt;markdown对于广大码农来说再平常不过了，方便快捷。&lt;/p&gt;
-&lt;p&gt;目前
+&lt;p&gt;目前市面上出现了大量的markdown编辑器：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Mou:只支持Mac&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Typed&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ulysess&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Macdown&lt;/p&gt;
+&lt;p&gt;
     
     </summary>
     
+      <category term="markdown" scheme="http://yoursite.com/categories/markdown/"/>
+    
+    
+      <category term="markdown" scheme="http://yoursite.com/tags/markdown/"/>
+    
+      <category term="typora" scheme="http://yoursite.com/tags/typora/"/>
+    
+      <category term="使用教程" scheme="http://yoursite.com/tags/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
