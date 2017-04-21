@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>΢��С�Ķ��Ĳ���</title>
-  <subtitle>asp.net core�̳̣����ߣ�ѧϰ����</subtitle>
+  <title>微尘小四儿的博客</title>
+  <subtitle>asp.net core教程，工具，学习交流</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://netcoreblog.com/"/>
@@ -9,7 +9,7 @@
   <id>http://netcoreblog.com/</id>
   
   <author>
-    <name>΢��С�Ķ�</name>
+    <name>微尘小四儿</name>
     
   </author>
   
