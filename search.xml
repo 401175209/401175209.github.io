@@ -3,6 +3,101 @@
   
     
     <entry>
+      <title><![CDATA[从零开始制作 Hexo 主题]]></title>
+      <url>/2017/04/24/untitled-1493021971014/</url>
+      <content type="html"><![CDATA[<p>本文将会从零开始开发一个简单的博客主题。样式主要参考 Hexo theme 中的 Noise 主题。</p>
+<p>开始之前你需要了解：</p>
+<ul>
+<li>模板引擎</li>
+<li>CSS预处理器</li>
+<li>Hexo 文档 <a id="more"></a><br>本文使用的模板引擎为 ejs ，使用的 CSS 预处理器为 stylus 。这也是 hexo 项目预装了的 render 插件，如果想使用其他模板引擎或者其他 CSS 预处理器，可以安装相对应的 render 插件。例如我的 Even 主题使用的是 Swig 与 SCSS。</li>
+</ul>
+<p>目录结构</p>
+<p>主题目录结构以自带的 landscape 主题为例：</p>
+<p>.<br>├── languages  语言文件，用于国际化<br>├── layout     页面模板文件<br>├── scripts    Hexo 脚本<br>└── source     主题资源文件，包括页面样式，脚本，字体等<br>我们在 themes 中新建 theme-example 文件夹，然后在 theme-demo 中按照 landscape 主题的目录结构新建 languages ， layout ， scripts 与 source 文件夹。</p>
+<p>创建布局模板</p>
+<p>在 layout 中创建 index.ejs 文件，首页将会使用该布局模板生成 HTML 文件。</p>
+<p>layout/index.ejs :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;metahttp-equiv=&quot;content-type&quot;content=&quot;text/html; charset=utf-8&quot;&gt;</div><div class="line">    &lt;metacontent=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&quot;name=&quot;viewport&quot;&gt;</div><div class="line">    &lt;title&gt;Home&lt;/title&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;h1&gt;Hello Word&lt;/h1&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>修改站点配置文件中的主题配置，使用我们刚刚创建的 theme-example 主题：</p>
+<h1 id="Extensions"><a href="#Extensions" class="headerlink" title="Extensions"></a>Extensions</h1><h2 id="Plugins-https-hexo-io-plugins"><a href="#Plugins-https-hexo-io-plugins" class="headerlink" title="Plugins: https://hexo.io/plugins/"></a>Plugins: <a href="https://hexo.io/plugins/" target="_blank" rel="external">https://hexo.io/plugins/</a></h2><h2 id="Themes-https-hexo-io-themes"><a href="#Themes-https-hexo-io-themes" class="headerlink" title="Themes: https://hexo.io/themes/"></a>Themes: <a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a></h2><p>theme: theme-example<br>运行 hexo server –debug 以 debug 模式开启 Hexo 本地服务器预览，访问 <a href="http://localhost:4000/" rel="external nofollow noopener noreferrer" target="_blank">http://localhost:4000/</a> 。</p>
+<p>添加页面导航</p>
+<p>现在我们需要在页面中添加导航，由于导航不单单会在首页出现，所以我们在 layout 中创建共用的布局文件 layout.ejs ， 同时创建 _partial/head.ejs 保存 HTML 的 head 以及创建 _partial/header.ejs 文件，编写页面导航部分。</p>
+<p>layout/layout.ejs :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;%-partial(&apos;_partial/head&apos;) %&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;%-partial(&apos;_partial/header&apos;) %&gt;</div><div class="line">    &lt;mainclass=&quot;main&quot;&gt;</div><div class="line">      &lt;%-body%&gt;</div><div class="line">    &lt;/main&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>layout.ejs 文件通过 partial() 函数来包含其他文件，使得我们能够更好的组织代码。详见 Templates | Hexo 。</p>
+<p>layout/_partial/head.ejs :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;head&gt;</div><div class="line">  &lt;metahttp-equiv=&quot;content-type&quot;content=&quot;text/html; charset=utf-8&quot;&gt;</div><div class="line">  &lt;metacontent=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&quot;name=&quot;viewport&quot;&gt;</div><div class="line">  &lt;title&gt;&lt;%=config.title%&gt;&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div></pre></td></tr></table></figure></p>
+<p>这里使用了 config 变量，该变量包含的是站点配置（即站点根目录下 _config.yml 中的配置）。除此之外，Hexo 还提供了许多变量可在模板中使用，详见 Variables | Hexo 。</p>
+<p>layout/_partial/header.ejs :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;headerclass=&quot;header&quot;&gt;</div><div class="line">  &lt;divclass=&quot;blog-title&quot;&gt;</div><div class="line">    &lt;ahref=&quot;&lt;%- url_for() %&gt;&quot;class=&quot;logo&quot;&gt;&lt;%=config.title%&gt;&lt;/a&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">  &lt;navclass=&quot;navbar&quot;&gt;</div><div class="line">    &lt;ulclass=&quot;menu&quot;&gt;</div><div class="line">      &lt;liclass=&quot;menu-item&quot;&gt;</div><div class="line">        &lt;ahref=&quot;/&quot;class=&quot;menu-item-link&quot;&gt;Home&lt;/a&gt;</div><div class="line">      &lt;/li&gt;</div><div class="line">      &lt;liclass=&quot;menu-item&quot;&gt;</div><div class="line">        &lt;ahref=&quot;/archives&quot;class=&quot;menu-item-link&quot;&gt;Archive&lt;/a&gt;</div><div class="line">      &lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">  &lt;/nav&gt;</div><div class="line">&lt;/header&gt;</div></pre></td></tr></table></figure></p>
+<p>接着我们清空 index.ejs 中的内容，并添加 </p><h2>Hello World</h2> 。在 layout 目录下的 index.ejs 会自动继承 layout.ejs ，并将其中的内容填入 &lt;%- body %&gt; 的位置。我们将得到一个有导航菜单的 Hello World 页面。<p></p>
+<p>添加主题配置文件</p>
+<p>实际上我们需要让导航菜单根据我们的需要显示不同的项，上面这种写法不方便修改。所以我们会在主题的配置文件中添加导航菜单的配置。在 thmem-demo 下新建主题的配置文件 _config.yml ，在其中添加需要配置的字段。然后可以通过 theme 这个变量来拿到该配置文件中的配置。</p>
+<p>theme-demo/_config.yml :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line"> Home: /</div><div class="line"> Archive: /archives</div></pre></td></tr></table></figure></p>
+<p>这样我们就可以在 header.ejs 中使用 theme.menu 获取到导航菜单的设置。将 header.ejs 修改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;headerclass=&quot;header&quot;&gt;</div><div class="line">  &lt;divclass=&quot;blog-title&quot;&gt;</div><div class="line">    &lt;ahref=&quot;&lt;%- url_for() %&gt;&quot;class=&quot;logo&quot;&gt;&lt;%=config.title%&gt;&lt;/a&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">  &lt;navclass=&quot;navbar&quot;&gt;</div><div class="line">    &lt;ulclass=&quot;menu&quot;&gt;</div><div class="line">      &lt;%for(nameintheme.menu) &#123; %&gt;</div><div class="line">        &lt;liclass=&quot;menu-item&quot;&gt;</div><div class="line">          &lt;ahref=&quot;&lt;%- url_for(theme.menu[name]) %&gt;&quot;class=&quot;menu-item-link&quot;&gt;&lt;%=name%&gt;&lt;/a&gt;</div><div class="line">        &lt;/li&gt;</div><div class="line">      &lt;%&#125; %&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">  &lt;/nav&gt;</div><div class="line">&lt;/header&gt;</div></pre></td></tr></table></figure></p>
+<p>当需要在导航中添加链接的时候就可以在配置文件中直接添加，例如添加 Github 的链接：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line"> Home: /</div><div class="line"> Archive: /archives</div><div class="line"> Github: https://github.com/ahonn</div></pre></td></tr></table></figure></p>
+<p>除此之外还可以添加其他需要的配置，例如 RSS，评论等等。</p>
+<p>添加首页文章列表</p>
+<p>接着我们完善首页的模板，使其能够显示文章列表。前面已经说过 Hexo 提供了各种有用的变量，在这里将会使用到 page 这个变量。 page 会根据不同的页面拥有不同的属性。具体有什么属性，可以获取到哪些数据可以查看 这里 。</p>
+<p>那么这里我们会使用 page 变量的 posts 属性拿到文章数据的集合。编辑 index.ejs 文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;sectionclass=&quot;posts&quot;&gt;</div><div class="line">  &lt;%page.posts.each(function(post) &#123; %&gt;</div><div class="line">    &lt;articleclass=&quot;post&quot;&gt;</div><div class="line">      &lt;divclass=&quot;post-title&quot;&gt;</div><div class="line">        &lt;aclass=&quot;post-title-link&quot;href=&quot;&lt;%- url_for(post.path) %&gt;&quot;&gt;&lt;%=post.title%&gt;&lt;/a&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">      &lt;divclass=&quot;post-content&quot;&gt;</div><div class="line">        &lt;%-post.content%&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">      &lt;divclass=&quot;post-meta&quot;&gt;</div><div class="line">        &lt;spanclass=&quot;post-time&quot;&gt;&lt;%-date(post.date, &quot;YYYY-MM-DD&quot;) %&gt;&lt;/span&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    &lt;/article&gt;</div><div class="line">  &lt;%&#125;) %&gt;</div><div class="line">&lt;/section&gt;</div></pre></td></tr></table></figure></p>
+<p>从 page.posts 中获取单篇文章的数据，并获取文章的标题，内容等数据填充到模板中。处理文章创建时间的时候使用了 date() 函数，这是 Hexo 提供的时间处理的 辅助函数 。本文中使用到的函数如无特别说明，即为 Hexo 的辅助函数。</p>
+<p>文章摘录</p>
+<p>由于首页显示文章内容时使用的是 post.content ，即文章的全部内容。所以首页会显示每一篇文章的内容，实际上我们并不想在首页显示那么多内容，只想显示文章的摘录。</p>
+<p>Hexo 提供了 excerpt 属性来获取文章的摘录部分，不过这里需要在文章中添加一个 <!-- more --> 标记。添加了这个标记之后， post.excerpt 将会获取到标记之前的内容。如果没有这个标记，那么 post.excerpt 会是空的。所以我们可以把首页文章内容部分的 post.content 替换成 post.excerpt 。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;divclass=&quot;post-content&quot;&gt;</div><div class="line">  &lt;%-post.excerpt%&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>添加页面样式</p>
+<p>到目前为止，我们完成了首页的页面结构，但是并没有添加样式，所以看起来很丑。我们在 source 文件中创建一个 css 文件夹来存放样式文件。</p>
+<p>由于 Hexo 在新建项目的时候会安装 hexo-renderer-stylus 这个插件，所以我们无需其他步骤，只需要将样式文件放到 css 文件夹中。Hexo 在生成页面的时候会将 source 中的所有文件复制到生成的 public 文件中，并且在此之前会编译 styl 为 css 文件。</p>
+<p>在 css 文件夹中创建 style.styl ，编写一些基础的样式，并把所有样式 import 到这个文件。所以最终编译之后只会有 style.css 一个文件。创建 _partial/header.styl 与 _partial/post.style 存放页面导航以及文章的样式，并且在 style.styl 中 import 这两个文件。</p>
+<p>_partial/header.styl :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">.header &#123;</div><div class="line">  margin-top: 2em</div><div class="line">  display: flex</div><div class="line">  align-items: baseline</div><div class="line">  justify-content: space-between</div><div class="line"></div><div class="line">  .blog-title .logo &#123;</div><div class="line">    color: #AAA;</div><div class="line">    font-size: 2em;</div><div class="line">    font-family: &quot;Comic Sans MS&quot;,cursive,LiSu,sans-serif;</div><div class="line">    text-decoration: none;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  .menu &#123;</div><div class="line">    margin: 0;</div><div class="line">    padding: 0;</div><div class="line"></div><div class="line">    .menu-item &#123;</div><div class="line">      display: inline-block;</div><div class="line">      margin-right: 10px;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    .menu-item-link &#123;</div><div class="line">      color: #AAA;</div><div class="line">      text-decoration: none;</div><div class="line"></div><div class="line">      &amp;:hover &#123;</div><div class="line">        color: #368CCB;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>_partial/post.style :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">.post &#123;</div><div class="line">  margin: 1em auto;</div><div class="line">  padding: 30px 50px;</div><div class="line">  background-color: #fff;</div><div class="line">  border: 1px solid #ddd;</div><div class="line">  box-shadow: 0 0 2px #ddd;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.posts  &#123;</div><div class="line">  .post:first-child &#123;</div><div class="line">    margin-top: 0;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  .post-title &#123;</div><div class="line">    font-size: 1.5em;</div><div class="line"></div><div class="line">    .post-title-link &#123;</div><div class="line">      color: #368CCB;</div><div class="line">      text-decoration: none;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  .post-content &#123;</div><div class="line">    a &#123;</div><div class="line">      color: #368CCB;</div><div class="line">      text-decoration: none;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  .post-meta &#123;</div><div class="line">    color: #BABABA;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>style.styl :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">  background-color: #F2F2F2;</div><div class="line">  font-size: 1.25rem;</div><div class="line">  line-height: 1.5;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.container &#123;</div><div class="line">  max-width: 960px;</div><div class="line">  margin: 0 auto;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@import &quot;_partial/header&quot;;</div><div class="line">@import &quot;_partial/post&quot;;</div></pre></td></tr></table></figure></p>
+<p>最后，我们需要把样式添加到页面中，这里使用了另外一个辅助函数 css() :</p>
+<p>layout/_partial/head.ejs<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;head&gt;</div><div class="line">  &lt;metahttp-equiv=&quot;content-type&quot;content=&quot;text/html; charset=utf-8&quot;&gt;</div><div class="line">  &lt;metacontent=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&quot;name=&quot;viewport&quot;&gt;</div><div class="line">  &lt;title&gt;&lt;%=config.title%&gt;&lt;/title&gt;</div><div class="line">  &lt;%-css(&apos;css/style.css&apos;) %&gt;</div><div class="line">&lt;/head&gt;</div></pre></td></tr></table></figure></p>
+<p>至此，我们会看到站点的首页是这个样子的：</p>
+<p>添加分页</p>
+<p>在站点的 source/_post/ 目录下存放的是我们的文章，现在我们把原本的 hello-world.md 复制黏贴 10+ 次，再查看站点首页。会发现，首页只显示了 10 篇文章。</p>
+<p>首页显示的文章数量我们可以通过站点配置文件中的 per_page 字段来修改，但是我们不可能把所有文章都放在一页，所以我们现在来添加文章列表的分页。</p>
+<p>新建 _partial/paginator.ejs :<br>```<br>&lt;%if(page.total&gt; 1){ %&gt;<br>  <navclass="page-nav"><br>    &lt;%-paginator({<br>      prev_text: “« Prev”,<br>      next_text: “Next »”<br>    }) %&gt;<br>  <br>&lt;%} %&gt;<br>···<br>在 index.ejs 中添加这个文件的内容：</navclass="page-nav"></p>
+<p>…<br><br>&lt;%-partial(‘_partial/paginator’) %&gt;<br>这里我们使用到了另外的一个辅助函数 paginator ，它能够帮助我们插入分页链接。</p>
+<p>添加文章详情页</p>
+<p>文章详情页对应的布局文件是 post.ejs ，新建 post.ejs :<br>···</p>
+<p><articleclass="post"><br>  <divclass="post-title"><br>    <h2class="title">&lt;%=page.title%&gt;<br>  <br>   <divclass="post-meta"><br>    <spanclass="post-time">&lt;%-date(page.date, “YYYY-MM-DD”) %&gt;<br>  <br>  <divclass="post-content"><br>    &lt;%-page.content%&gt;<br>  <br><br>···<br>由于这里是文章的模板，所以变量 page 表示的是文章的数据，而不是首页的文章数据集合。</divclass="post-content"></spanclass="post-time"></divclass="post-meta"></h2class="title"></divclass="post-title"></articleclass="post"></p>
+<p>添加归档页</p>
+<p>创建归档页使用的模板文件 archive.ejs :</p>
+<p><sectionclass="archive"><br>  <ulclass="post-archive"><br>    &lt;%page.posts.each(function(post) { %&gt;<br>      <liclass="post-item"><br>        <spanclass="post-date">&lt;%=date(post.date, “YYYY-MM-DD”) %&gt;<br>        <aclass="post-title"href="<%- url_for(post.path)="" %="">">&lt;%=post.title%&gt;<br>      <br>    &lt;%}) %&gt;<br>  <br><br>&lt;%-partial(‘_partial/paginator’) %&gt;<br>其实结构跟首页差不多，只是不显示文章内容而已。添加归档页的样式：</aclass="post-title"href="<%-></spanclass="post-date"></liclass="post-item"></ulclass="post-archive"></sectionclass="archive"></p>
+<p>css/_partial/archive.styl :</p>
+<p>.archive {<br>  margin: 1em auto;<br>  padding: 30px 50px;<br>  background-color: #fff;<br>  border: 1px solid #ddd;<br>  box-shadow: 0 0 2px #ddd;</p>
+<p>  .post-archive {<br>    list-style: none;<br>    padding: 0;</p>
+<pre><code>.post-item {
+  margin: 5px 0;
+
+  .post-date {
+    display: inline-block;
+    margin-right: 10px;
+    color: #BABABA;
+  }
+
+  .post-title {
+    color: #368CCB;
+    text-decoration: none;
+  }
+}
+</code></pre><p>  }<br>}</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Hexo </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[C#自定义控件之-TabControl美化]]></title>
       <url>/2017/04/19/TabControl%E7%BE%8E%E5%8C%96/</url>
       <content type="html"><![CDATA[<h1 id="C-自定义控件之-TabControl美化"><a href="#C-自定义控件之-TabControl美化" class="headerlink" title="C#自定义控件之-TabControl美化"></a>C#自定义控件之-TabControl美化</h1><p>&#160;&#160;&#160;&#160;使用C#开发了很多桌面应用程序，一直苦恼于系统自带的控件太丑，网上资源又太乱，因此为了以后自己使用和方便他人从这篇博文开始，陆续把自己收集整理的各类控件分享给大家一块学习，有不对的地方还请大家指出。不废话了，今天的主角是—–TabControl<br><a id="more"></a></p>
@@ -358,17 +453,17 @@
   
     
     <entry>
-      <title><![CDATA[读书]]></title>
-      <url>/reading/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[关于]]></title>
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<p>大家好，我是微尘小四儿。欢迎来到我的个人技术博客。</p>
 <p>现在在一家初创公司工作，每天忙得像个傻逼，没有休息时间。现在主要研究ThinkPHP和asp.net core。博客也是为了记录自己在生活学习中的点点滴滴，希望和大家共同交流学习。</p>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[读书]]></title>
+      <url>/reading/index.html</url>
+      <content type="html"></content>
     </entry>
     
   
