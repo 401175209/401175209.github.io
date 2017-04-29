@@ -3,6 +3,49 @@
   
     
     <entry>
+      <title><![CDATA[ASP.NET CORE基础教程系列目录]]></title>
+      <url>/2017/04/29/ASP.NET%20CORE%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%97%E7%9B%AE%E5%BD%95/</url>
+      <content type="html"><![CDATA[<h1 id="ASP-NET-CORE基础教程系列目录"><a href="#ASP-NET-CORE基础教程系列目录" class="headerlink" title="ASP.NET CORE基础教程系列目录"></a>ASP.NET CORE基础教程系列目录</h1><p>本篇为asp.netcore 基础教程系列开篇之作，也是目录同时也是规划，整个基础教程根据官方的基础整理，主要是为了记录学习，同时也方便大家查看。<br><a id="more"></a></p>
+<ul>
+<li><strong>ASP.NET CORE基础教程(一)-启动文件Startup</strong></li>
+<li><strong>ASP.NET CORE基础教程(二)-中间件</strong></li>
+<li><strong>ASP.NET CORE基础教程(三)-静态文件</strong></li>
+<li><strong>ASP.NET CORE基础教程(四)-路由</strong></li>
+<li><strong>ASP.NET CORE基础教程(五)-URL重写</strong></li>
+<li><strong>ASP.NET CORE基础教程(六)-错误处理</strong></li>
+<li><strong>ASP.NET CORE基础教程(七)-WebSockets</strong></li>
+<li><strong>ASP.NET CORE基础教程(八)-全球化/本地化</strong></li>
+<li><strong>ASP.NET CORE基础教程(九)-配置</strong></li>
+<li><strong>ASP.NET CORE基础教程(十)-日志</strong></li>
+<li><strong>ASP.NET CORE基础教程(十一)-共享文件</strong></li>
+<li><strong>ASP.NET CORE基础教程(十二)-依赖注入</strong></li>
+<li><strong>ASP.NET CORE基础教程(十三)-多环境配置</strong></li>
+<li><strong>ASP.NET CORE基础教程(十四)-托管</strong></li>
+<li><strong>ASP.NET CORE基础教程(十五)-Session和应用状态</strong></li>
+<li><strong>ASP.NET CORE基础教程(十六)-服务端</strong></li>
+<li><strong>ASP.NET CORE基础教程(十七)-请求</strong></li>
+<li><strong>ASP.NET CORE基础教程(十八)-OWIN</strong></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> ASP.NET CORE </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> ASP.NET CORE </tag>
+            
+            <tag> 基础教程 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[从零开始制作 Hexo 主题]]></title>
       <url>/2017/04/24/untitled-1493021971014/</url>
       <content type="html"><![CDATA[<p>本文将会从零开始开发一个简单的博客主题。样式主要参考 Hexo theme 中的 Noise 主题。</p>
@@ -334,9 +377,9 @@
         
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> 部署安装 </tag>
+            
+            <tag> hexo </tag>
             
         </tags>
         
@@ -441,9 +484,9 @@
         
         <tags>
             
-            <tag> 主题 </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> 主题 </tag>
             
         </tags>
         
@@ -453,17 +496,17 @@
   
     
     <entry>
+      <title><![CDATA[读书]]></title>
+      <url>/reading/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[关于]]></title>
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<p>大家好，我是微尘小四儿。欢迎来到我的个人技术博客。</p>
 <p>现在在一家初创公司工作，每天忙得像个傻逼，没有休息时间。现在主要研究ThinkPHP和asp.net core。博客也是为了记录自己在生活学习中的点点滴滴，希望和大家共同交流学习。</p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[读书]]></title>
-      <url>/reading/index.html</url>
-      <content type="html"></content>
     </entry>
     
   
