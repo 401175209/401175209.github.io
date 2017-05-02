@@ -432,9 +432,9 @@
       <category term="Hexo" scheme="http://netcoreblog.com/categories/Hexo/"/>
     
     
-      <category term="hexo" scheme="http://netcoreblog.com/tags/hexo/"/>
-    
       <category term="部署安装" scheme="http://netcoreblog.com/tags/%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85/"/>
+    
+      <category term="hexo" scheme="http://netcoreblog.com/tags/hexo/"/>
     
   </entry>
   
@@ -541,9 +541,9 @@
       <category term="Hexo" scheme="http://netcoreblog.com/categories/Hexo/"/>
     
     
-      <category term="主题" scheme="http://netcoreblog.com/tags/%E4%B8%BB%E9%A2%98/"/>
-    
       <category term="hexo" scheme="http://netcoreblog.com/tags/hexo/"/>
+    
+      <category term="主题" scheme="http://netcoreblog.com/tags/%E4%B8%BB%E9%A2%98/"/>
     
   </entry>
   
