@@ -7,7 +7,7 @@
 
     
 
-    <title>ASP.NET CORE基础教程系列目录 | asp.net core教程，工具，学习交流</title>
+    <title>ASP.NET CORE基础教程(二)-中间件 | asp.net core教程，工具，学习交流</title>
     <meta name="author" content="微尘小四儿">
     
     <meta name="description" content="微尘小四儿的个人微博，主要记录自己生活学习中的一些个人想法，asp.net core,.net,C#。asp.net core教程，工具，学习交流">
@@ -15,7 +15,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="ASP.NET CORE基础教程系列目录">
+    <meta property="og:title" content="ASP.NET CORE基础教程(二)-中间件">
     <meta property="og:site_name" content="微尘小四儿的博客">
 
     
@@ -249,12 +249,12 @@
             <div class="article-title">
                 
     
-        <h1>ASP.NET CORE基础教程系列目录</h1>
+        <h1>ASP.NET CORE基础教程(二)-中间件</h1>
     
 
 
             </div>
-            <time class="pink-link-context" datetime="2017-04-29T14:49:56.000Z"><a href="/2017/04/29/ASP.NET CORE基础教程系列目录/">2017-04-29</a></time>
+            <time class="pink-link-context" datetime="2017-05-02T09:27:18.000Z"><a href="/2017/05/02/ASP.NET CORE基础教程(二)-中间件/">2017-05-02</a></time>
 
             <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>&nbsp阅读次数：
@@ -266,53 +266,82 @@
         
             <a href="/tags/ASP-NET-CORE/" class="chip pink lighten-1">ASP.NET CORE</a>
         
+            <a href="/tags/startup/" class="chip pink lighten-1">startup</a>
+        
             <a href="/tags/基础教程/" class="chip pink lighten-1">基础教程</a>
+        
+            <a href="/tags/中间件/" class="chip pink lighten-1">中间件</a>
         
     </div>
 
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#ASP-NET-CORE基础教程系列目录"><span class="section table-of-contents-text">ASP.NET CORE基础教程系列目录</span></a></li></ol>
+    
 </div>
 
 
             <div class="entry pink-link-context">
-                <h1 id="ASP-NET-CORE基础教程系列目录"><a href="#ASP-NET-CORE基础教程系列目录" class="headerlink" title="ASP.NET CORE基础教程系列目录"></a>ASP.NET CORE基础教程系列目录</h1><p>本篇为asp.netcore 基础教程系列开篇之作，也是目录同时也是规划，整个基础教程根据官方的基础整理，主要是为了记录学习，同时也方便大家查看。<br><a id="more"></a></p>
+                <p>#ASP.NET CORE基础教程(二)-中间件</p>
+<p>##中间件概述<br>所谓中间件就是嵌入到应用中用来处理请求和响应的软件。在管道中每一个元件都能够选择是否把请求传递给下一个元件，同时能在下一个元件被调用前后执行相应的操作。此时相应的请求委托便会在管道中建立用来响应http请求。<a id="more"></a><br>通过在 IApplicationBuilder实例中使用Run,Map,Use扩展方法能够配置请求委托，当然了IApplicationBuilder一定是在startup的configure中实例的才行。单个请求可以被指定为匿名方法（叫做内嵌中间件），或者它可以在可重用类中定义，这些可重复类以及内嵌匿名方法就被叫做中间件或者中间件元件。请求管道中的每一个中间件都需要调用下一个中间件，当然了，他也可以在适当的情况下短路自己，不调用下一个中间件。</p>
+<p>##通过 IApplicationBuilder创建中间件管道<br>ASP.NET CORE请求管道由一些列请求委托组成，执行顺序从前到后，依次执行，其流程图如下（微软官方图）<img src="http://img.blog.csdn.net/20170502132330616?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGNqNDAxMTc1MjA5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="如下"><br>如图所示，每一个中间件可以在调用下一个之前或之后执行操作。中间件可以选择不把请求传递给下一个中间件，也就是“短路请求管道”，（为了避免不必要的工作量，有时候需要使用”短路“）。比如静态文件中间件可以返回静态文件的请求，并对管道的其余部分进行短路。其中异常处理中间件需要先调用，只有这样他才能够在后续过程中捕获异常。<br>下面是一个最简单的中间件，不包括任何实际的请求，能够响应所有http请求。代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">using Microsoft.AspNetCore.Builder;</div><div class="line">using Microsoft.AspNetCore.Hosting;</div><div class="line">using Microsoft.AspNetCore.Http;</div><div class="line"></div><div class="line">public class Startup</div><div class="line">&#123;</div><div class="line">    public void Configure(IApplicationBuilder app)</div><div class="line">    &#123;</div><div class="line">        app.Run(async context =&gt;</div><div class="line">        &#123;</div><div class="line">            await context.Response.WriteAsync(&quot;Hello, World!&quot;);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你可以通过使用app.use来调用一系列请求委托，其中参数next表示下一个请求委托。当你不掉用next参数即视为你短路了管道。你可以像下面一样在调用下一个委托之前执行一些操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public class Startup</div><div class="line">&#123;</div><div class="line">    public void Configure(IApplicationBuilder app)</div><div class="line">    &#123;</div><div class="line">        app.Use(async (context, next) =&gt;</div><div class="line">        &#123;</div><div class="line">            // Do work that doesn&apos;t write to the Response.</div><div class="line">            await next.Invoke();</div><div class="line">            // Do logging or other work that doesn&apos;t write to the Response.</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        app.Run(async context =&gt;</div><div class="line">        &#123;</div><div class="line">            await context.Response.WriteAsync(&quot;Hello from 2nd delegate.&quot;);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意<br>不要在请求已经发送给客户时短路管道，因为任何在HttpResponse响应发送以后的改变均会导致系统异常。</p>
+</blockquote>
+<p>##顺序<br>在Configure中添加中间件的顺序决定了应用处理请求的顺序，为了逻辑上的正确，推荐添加中间件顺序为：</p>
 <ul>
-<li><strong>ASP.NET CORE基础教程(一)-启动文件Startup</strong></li>
-<li><strong>ASP.NET CORE基础教程(二)-中间件</strong></li>
-<li><strong>ASP.NET CORE基础教程(三)-静态文件</strong></li>
-<li><strong>ASP.NET CORE基础教程(四)-路由</strong></li>
-<li><strong>ASP.NET CORE基础教程(五)-URL重写</strong></li>
-<li><strong>ASP.NET CORE基础教程(六)-错误处理</strong></li>
-<li><strong>ASP.NET CORE基础教程(七)-WebSockets</strong></li>
-<li><strong>ASP.NET CORE基础教程(八)-全球化/本地化</strong></li>
-<li><strong>ASP.NET CORE基础教程(九)-配置</strong></li>
-<li><strong>ASP.NET CORE基础教程(十)-日志</strong></li>
-<li><strong>ASP.NET CORE基础教程(十一)-共享文件</strong></li>
-<li><strong>ASP.NET CORE基础教程(十二)-依赖注入</strong></li>
-<li><strong>ASP.NET CORE基础教程(十三)-多环境配置</strong></li>
-<li><strong>ASP.NET CORE基础教程(十四)-托管</strong></li>
-<li><strong>ASP.NET CORE基础教程(十五)-Session和应用状态</strong></li>
-<li><strong>ASP.NET CORE基础教程(十六)-服务端</strong></li>
-<li><strong>ASP.NET CORE基础教程(十七)-请求</strong></li>
-<li><strong>ASP.NET CORE基础教程(十八)-OWIN</strong></li>
+<li>异常处理</li>
+<li>静态文件付无</li>
+<li>认证</li>
+<li>MVC</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public void Configure(IApplicationBuilder app)</div><div class="line">&#123;</div><div class="line">    app.UseExceptionHandler(&quot;/Home/Error&quot;); // Call first to catch exceptions</div><div class="line">                                            // thrown in the following middleware.</div><div class="line"></div><div class="line">    app.UseStaticFiles();                   // Return static files and end pipeline.</div><div class="line"></div><div class="line">    app.UseIdentity();                     // Authenticate before you access</div><div class="line">                                           // secure resources.</div><div class="line"></div><div class="line">    app.UseMvcWithDefaultRoute();          // Add MVC to the request pipeline.</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码中app.UseExceptionHandler是管道中的第一个中间件，所以他可以捕获后续应用的所有异常。<br>然后是静态文件中间件，他可以不通过其他中间件处理请求和短路管道。静态文件中间件不需要认证，因此只要是在网站根目录（wwwroot）下的文件都可以访问。<br>更多查看另一篇教程-处理静态文件。<br>如果一个请求没有被静态文件中间件处理那么他就会被传递给认证中间件 （app.UseIdentity）。只有当MVC选择了某个控制器并执行了某个操作后认证才能够被调用。</p>
+<p>##Run,Map,Use<br>应用通过Run,Map,Use配置HTTP请求管道。<br>其中Run用来短路中间件，通常在中间件管道最后调用run方法。<br>Mapxxx通常用来使请求管道分支。map通过给定的路径来划分请求管道，如果一个请求路径中包含给定的路径那么这个分支就会被执行，下面是一个简单的例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public class Startup</div><div class="line">&#123;</div><div class="line">    private static void HandleMapTest1(IApplicationBuilder app)</div><div class="line">    &#123;</div><div class="line">        app.Run(async context =&gt;</div><div class="line">        &#123;</div><div class="line">            await context.Response.WriteAsync(&quot;Map Test 1&quot;);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private static void HandleMapTest2(IApplicationBuilder app)</div><div class="line">    &#123;</div><div class="line">        app.Run(async context =&gt;</div><div class="line">        &#123;</div><div class="line">            await context.Response.WriteAsync(&quot;Map Test 2&quot;);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void Configure(IApplicationBuilder app)</div><div class="line">    &#123;</div><div class="line">        app.Map(&quot;/map1&quot;, HandleMapTest1);</div><div class="line"></div><div class="line">        app.Map(&quot;/map2&quot;, HandleMapTest2);</div><div class="line"></div><div class="line">        app.Run(async context =&gt;</div><div class="line">        &#123;</div><div class="line">            await context.Response.WriteAsync(&quot;Hello from non-Map delegate. &lt;p&gt;&quot;);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一旦map被使用，匹配出来的来路径部分会从HttpRequest.Path中移除，同时添加到HttpRequest.PathBase中。</p>
+<p>##编译中间件<br>asp.net core自带如下中间件：</p>
+<ul>
+<li>Authentication：提供认证支持</li>
+<li>CORS：配置资源跨域共享</li>
+<li>Response Caching：提供响应缓存支持</li>
+<li>Response Compression：提供响应压缩支持</li>
+<li>Routing：提供路由支持</li>
+<li>Session：提供Session支持</li>
+<li>Static Files：提供静态文件服务和路径浏览付无</li>
+<li><p>URL Rewriting Middleware：URL重写和请求重定向</p>
+<p>##自定义中间件<br>中间件一般定义在类里面，对外提供扩展方法。下面的例子展示了通过中间件设置字段的功能。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public class Startup</div><div class="line">&#123;</div><div class="line">    public void Configure(IApplicationBuilder app)</div><div class="line">    &#123;</div><div class="line">        app.Use((context, next) =&gt;</div><div class="line">        &#123;</div><div class="line">            var cultureQuery = context.Request.Query[&quot;culture&quot;];</div><div class="line">            if (!string.IsNullOrWhiteSpace(cultureQuery))</div><div class="line">            &#123;</div><div class="line">                var culture = new CultureInfo(cultureQuery);</div><div class="line"></div><div class="line">                CultureInfo.CurrentCulture = culture;</div><div class="line">                CultureInfo.CurrentUICulture = culture;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            // Call the next delegate/middleware in the pipeline</div><div class="line">            return next();</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        app.Run(async (context) =&gt;</div><div class="line">        &#123;</div><div class="line">            await context.Response.WriteAsync(</div><div class="line">                $&quot;Hello &#123;CultureInfo.CurrentCulture.DisplayName&#125;&quot;);</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在浏览器中输入<a href="http://localhost:xxxx/?culture=no即可测试，其中xxxx表示你的应用端口号。" rel="external nofollow noopener noreferrer" target="_blank">http://localhost:xxxx/?culture=no即可测试，其中xxxx表示你的应用端口号。</a><br>以下代码把委托放到了类中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">using Microsoft.AspNetCore.Http;</div><div class="line">using System.Globalization;</div><div class="line">using System.Threading.Tasks;</div><div class="line"></div><div class="line">namespace Culture</div><div class="line">&#123;</div><div class="line">    public class RequestCultureMiddleware</div><div class="line">    &#123;</div><div class="line">        private readonly RequestDelegate _next;</div><div class="line"></div><div class="line">        public RequestCultureMiddleware(RequestDelegate next)</div><div class="line">        &#123;</div><div class="line">            _next = next;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        public Task Invoke(HttpContext context)</div><div class="line">        &#123;</div><div class="line">            var cultureQuery = context.Request.Query[&quot;culture&quot;];</div><div class="line">            if (!string.IsNullOrWhiteSpace(cultureQuery))</div><div class="line">            &#123;</div><div class="line">                var culture = new CultureInfo(cultureQuery);</div><div class="line"></div><div class="line">                CultureInfo.CurrentCulture = culture;</div><div class="line">                CultureInfo.CurrentUICulture = culture;</div><div class="line"></div><div class="line">            &#125;</div><div class="line"></div><div class="line">            // Call the next delegate/middleware in the pipeline</div><div class="line">            return this._next(context);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面的扩展方法通过IApplicationBuilder使用了该中间件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">using Microsoft.AspNetCore.Builder;</div><div class="line"></div><div class="line">namespace Culture</div><div class="line">&#123;</div><div class="line">    public static class RequestCultureMiddlewareExtensions</div><div class="line">    &#123;</div><div class="line">        public static IApplicationBuilder UseRequestCulture(</div><div class="line">            this IApplicationBuilder builder)</div><div class="line">        &#123;</div><div class="line">            return builder.UseMiddleware&lt;RequestCultureMiddleware&gt;();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以下代码是在configure中调用该中间件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class Startup</div><div class="line">&#123;</div><div class="line">    public void Configure(IApplicationBuilder app)</div><div class="line">    &#123;</div><div class="line">        app.UseRequestCulture();</div><div class="line"></div><div class="line">        app.Run(async (context) =&gt;</div><div class="line">        &#123;</div><div class="line">            await context.Response.WriteAsync(</div><div class="line">                $&quot;Hello &#123;CultureInfo.CurrentCulture.DisplayName&#125;&quot;);</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>中间件应该遵循显示依赖原则，也就是说把依赖提供在构造函数中。中间件只要创建，在整个应用的生命周期里都是好使的。<br>好了，以上就是本片教程的内容，接下来的教程是</p>
+<ul>
+<li>ASP.NET CORE基础教程(三)-静态文件</li>
 </ul>
 
 
 		    
 <p class="pink-link-context">
-    <a href="/2017/05/01/ASP.NET CORE基础教程(一)-启动文件Startup/" rel="next" title="ASP.NET CORE基础教程(一)-启动文件Startup">
-    上一篇：ASP.NET CORE基础教程(一)-启动文件Startup
-  </a>
+    <a href="/2017/05/02/ASP.NET CORE基础教程(二)-中间件/" rel="next" title="ASP.NET CORE基础教程(二)-中间件">
+上一篇：没有了，再看看别的好吗？ </a>
+
 </p>
 
 
 
 
+
 <p class="pink-link-context">
-    <a href="/2017/04/19/TabControl美化/" rel="next" title="C#自定义控件之-TabControl美化">
-    下一篇：C#自定义控件之-TabControl美化
+    <a href="/2017/05/01/ASP.NET CORE基础教程(一)-启动文件Startup/" rel="next" title="ASP.NET CORE基础教程(一)-启动文件Startup">
+    下一篇：ASP.NET CORE基础教程(一)-启动文件Startup
   </a>
 </p>
 

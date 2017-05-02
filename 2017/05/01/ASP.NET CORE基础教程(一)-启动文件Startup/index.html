@@ -7,7 +7,7 @@
 
     
 
-    <title>ASP.NET CORE基础教程系列目录 | asp.net core教程，工具，学习交流</title>
+    <title>ASP.NET CORE基础教程(一)-启动文件Startup | asp.net core教程，工具，学习交流</title>
     <meta name="author" content="微尘小四儿">
     
     <meta name="description" content="微尘小四儿的个人微博，主要记录自己生活学习中的一些个人想法，asp.net core,.net,C#。asp.net core教程，工具，学习交流">
@@ -15,7 +15,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="ASP.NET CORE基础教程系列目录">
+    <meta property="og:title" content="ASP.NET CORE基础教程(一)-启动文件Startup">
     <meta property="og:site_name" content="微尘小四儿的博客">
 
     
@@ -249,12 +249,12 @@
             <div class="article-title">
                 
     
-        <h1>ASP.NET CORE基础教程系列目录</h1>
+        <h1>ASP.NET CORE基础教程(一)-启动文件Startup</h1>
     
 
 
             </div>
-            <time class="pink-link-context" datetime="2017-04-29T14:49:56.000Z"><a href="/2017/04/29/ASP.NET CORE基础教程系列目录/">2017-04-29</a></time>
+            <time class="pink-link-context" datetime="2017-05-01T09:25:35.000Z"><a href="/2017/05/01/ASP.NET CORE基础教程(一)-启动文件Startup/">2017-05-01</a></time>
 
             <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>&nbsp阅读次数：
@@ -266,44 +266,33 @@
         
             <a href="/tags/ASP-NET-CORE/" class="chip pink lighten-1">ASP.NET CORE</a>
         
+            <a href="/tags/startup/" class="chip pink lighten-1">startup</a>
+        
             <a href="/tags/基础教程/" class="chip pink lighten-1">基础教程</a>
         
     </div>
 
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#ASP-NET-CORE基础教程系列目录"><span class="section table-of-contents-text">ASP.NET CORE基础教程系列目录</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#ConfigureServices方法"><span class="section table-of-contents-text">ConfigureServices方法</span></a></li></ol>
 </div>
 
 
             <div class="entry pink-link-context">
-                <h1 id="ASP-NET-CORE基础教程系列目录"><a href="#ASP-NET-CORE基础教程系列目录" class="headerlink" title="ASP.NET CORE基础教程系列目录"></a>ASP.NET CORE基础教程系列目录</h1><p>本篇为asp.netcore 基础教程系列开篇之作，也是目录同时也是规划，整个基础教程根据官方的基础整理，主要是为了记录学习，同时也方便大家查看。<br><a id="more"></a></p>
-<ul>
-<li><strong>ASP.NET CORE基础教程(一)-启动文件Startup</strong></li>
-<li><strong>ASP.NET CORE基础教程(二)-中间件</strong></li>
-<li><strong>ASP.NET CORE基础教程(三)-静态文件</strong></li>
-<li><strong>ASP.NET CORE基础教程(四)-路由</strong></li>
-<li><strong>ASP.NET CORE基础教程(五)-URL重写</strong></li>
-<li><strong>ASP.NET CORE基础教程(六)-错误处理</strong></li>
-<li><strong>ASP.NET CORE基础教程(七)-WebSockets</strong></li>
-<li><strong>ASP.NET CORE基础教程(八)-全球化/本地化</strong></li>
-<li><strong>ASP.NET CORE基础教程(九)-配置</strong></li>
-<li><strong>ASP.NET CORE基础教程(十)-日志</strong></li>
-<li><strong>ASP.NET CORE基础教程(十一)-共享文件</strong></li>
-<li><strong>ASP.NET CORE基础教程(十二)-依赖注入</strong></li>
-<li><strong>ASP.NET CORE基础教程(十三)-多环境配置</strong></li>
-<li><strong>ASP.NET CORE基础教程(十四)-托管</strong></li>
-<li><strong>ASP.NET CORE基础教程(十五)-Session和应用状态</strong></li>
-<li><strong>ASP.NET CORE基础教程(十六)-服务端</strong></li>
-<li><strong>ASP.NET CORE基础教程(十七)-请求</strong></li>
-<li><strong>ASP.NET CORE基础教程(十八)-OWIN</strong></li>
-</ul>
+                <p>#ASP.NET CORE基础教程(一)-启动文件Startup<br>Startup类起到配置处理监听请求通道的作用。</p>
+<p>##Startup类<br>ASP.NET CORE应用程序必须有Startup文件，在主函数中调用，可以随意命名，但通常使用系统默认的startup.<br>可以通过startup的构造函数进行依赖注入。<a id="more"></a>通过IHostingEnvironment、ILoggerFactory等加载各种配置或是日志等等。<br>startup类中必须包含Configure方法同时可以根据实际情况添加ConfigureServices方法，这两个方法均在应用程序运行时被调用。</p>
+<p>##Configure方法<br>该方法用于指出asp.net core应用程序如何响应HTTP请求。通过向IApplicationBuilder实例添加中间件组件来配置请求管道。<br>下面的例子中就包含了使应用程序支持错误页、静态文件、MVC、身份验证等等，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)</div><div class="line">&#123;</div><div class="line">    loggerFactory.AddConsole(Configuration.GetSection(&quot;Logging&quot;));</div><div class="line">    loggerFactory.AddDebug();</div><div class="line"></div><div class="line">    if (env.IsDevelopment())</div><div class="line">    &#123;</div><div class="line">        app.UseDeveloperExceptionPage();</div><div class="line">        app.UseDatabaseErrorPage();</div><div class="line">        app.UseBrowserLink();</div><div class="line">    &#125;</div><div class="line">    else</div><div class="line">    &#123;</div><div class="line">        app.UseExceptionHandler(&quot;/Home/Error&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    app.UseStaticFiles();</div><div class="line"></div><div class="line">    app.UseIdentity();</div><div class="line"></div><div class="line">    app.UseMvc(routes =&gt;</div><div class="line">    &#123;</div><div class="line">        routes.MapRoute(</div><div class="line">            name: &quot;default&quot;,</div><div class="line">            template: &quot;&#123;controller=Home&#125;/&#123;action=Index&#125;/&#123;id?&#125;&quot;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过使用usexxx方法来添加中间件到请求管道上，例如使用useMvc给应用程序添加MVC支持。更多的关于中间件的知识请看相关教程-中间件。</p>
+<h2 id="ConfigureServices方法"><a href="#ConfigureServices方法" class="headerlink" title="ConfigureServices方法"></a>ConfigureServices方法</h2><p>该方法不是必须的。如果使用的话，他必须在Configure之前。配置参数一般在这个方法里设置。<br>需要使用服务的话可以通过addxxx扩展方法来添加，一下例子使用了服务项，其中包括Entity Framework, Identity, 以及MVC。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public void ConfigureServices(IServiceCollection services)</div><div class="line">&#123;</div><div class="line">    // Add framework services.</div><div class="line">    services.AddDbContext&lt;ApplicationDbContext&gt;(options =&gt;</div><div class="line">        options.UseSqlServer(Configuration.GetConnectionString(&quot;DefaultConnection&quot;)));</div><div class="line"></div><div class="line">    services.AddIdentity&lt;ApplicationUser, IdentityRole&gt;()</div><div class="line">        .AddEntityFrameworkStores&lt;ApplicationDbContext&gt;()</div><div class="line">        .AddDefaultTokenProviders();</div><div class="line"></div><div class="line">    services.AddMvc();</div><div class="line"></div><div class="line">    // Add application services.</div><div class="line">    services.AddTransient&lt;IEmailSender, AuthMessageSender&gt;();</div><div class="line">    services.AddTransient&lt;ISmsSender, AuthMessageSender&gt;();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>只有把服务添加到服务容器中才能让这些服务可以通过依赖注入的形式在应用中使用。</p>
 
 
 		    
 <p class="pink-link-context">
-    <a href="/2017/05/01/ASP.NET CORE基础教程(一)-启动文件Startup/" rel="next" title="ASP.NET CORE基础教程(一)-启动文件Startup">
-    上一篇：ASP.NET CORE基础教程(一)-启动文件Startup
+    <a href="/2017/05/02/ASP.NET CORE基础教程(二)-中间件/" rel="next" title="ASP.NET CORE基础教程(二)-中间件">
+    上一篇：ASP.NET CORE基础教程(二)-中间件
   </a>
 </p>
 
@@ -311,8 +300,8 @@
 
 
 <p class="pink-link-context">
-    <a href="/2017/04/19/TabControl美化/" rel="next" title="C#自定义控件之-TabControl美化">
-    下一篇：C#自定义控件之-TabControl美化
+    <a href="/2017/04/29/ASP.NET CORE基础教程系列目录/" rel="next" title="ASP.NET CORE基础教程系列目录">
+    下一篇：ASP.NET CORE基础教程系列目录
   </a>
 </p>
 
